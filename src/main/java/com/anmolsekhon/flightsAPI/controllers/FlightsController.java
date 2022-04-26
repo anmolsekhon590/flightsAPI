@@ -24,4 +24,15 @@ public class FlightsController {
     public List<Flights> getAllFlights() {
         return flightsService.getAllFlights();
     }
+
+    @PostMapping
+    public void addFlight(@RequestBody Flights flight) {
+        flightsService.saveFlights(flight);
+    }
+
+    @DeleteMapping("{flightNumber}")
+    public void deleteFlight(@PathVariable Long flightNumber) {
+        flightsService.deleteFlight(flightNumber);
+    }
+
 }

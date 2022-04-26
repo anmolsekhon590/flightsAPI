@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
+import java.util.List ;
 
 @Slf4j
 @Service
@@ -24,8 +24,8 @@ public class FlightsServiceImpl implements FlightsService {
     private final PilotRepo pilotRepo;
 
     @Override
-    public Flights saveFlights(Flights flights) {
-        return flightsRepo.save(flights);
+    public Flights saveFlights(Flights flight) {
+        return flightsRepo.save(flight);
     }
 
     @Override
@@ -65,5 +65,11 @@ public class FlightsServiceImpl implements FlightsService {
     public List<Flights> getAllFlights() {
         log.info("Fetching all flights from database");
         return flightsRepo.findAll();
+    }
+
+    @Override
+    public void deleteFlight(Long flightNumber) {
+        Flights flight = getFlightByFlightNumber(flightNumber);
+        flightsRepo.deleteById(flight.getFlight_id());
     }
 }

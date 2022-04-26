@@ -16,4 +16,6 @@ public interface FlightsService {
 
     Flights getFlightByFlightNumber(Long flightNumber);
     List<Flights> getAllFlights();
+
+    void deleteFlight(Long flightNumber);
 }
